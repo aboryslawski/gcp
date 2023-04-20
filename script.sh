@@ -2,7 +2,7 @@ for x in $(cat ips)
 do
         scp mat_vec_row_MPI $x:/home/xz1szybko
         echo "executing mpi install"
-        ssh -t $x 'sudo apt install -y libopenmpi-dev; bash -l' -o "StrictHostKeyChecking no"
+        ssh  -o "StrictHostKeyChecking no" -t $x 'sudo apt install -y libopenmpi-dev;exit; bash -l'
         echo "mpi install complete"
 done
 
