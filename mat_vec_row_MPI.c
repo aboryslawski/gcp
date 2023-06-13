@@ -181,18 +181,27 @@ main ( int argc, char** argv )
     
     // point-to-point not optimal communication
     
-    if(rank>0){
-      
-      MPI_Send( z, n_wier, MPI_DOUBLE, 0, tag, MPI_COMM_WORLD );
-      
-    } else {
-      
-      for(i=1;i<size;i++){
-	MPI_Recv( &z[i*n_wier], n_wier, MPI_DOUBLE, i, tag, MPI_COMM_WORLD, &status  );
-	
-      }
-      
+    if(rank!=0)
+    {
+      for(i=0;i<WYMIAR;i++) x[i]=0.0;
+      a = (double *) malloc(WYMIAR*n_wier*sizeof(double));
     }
+
+    MPI_Scatter(a, WYMIAR*n_wier, MPI_DOUBLE, a, WYMIAR*n_wier, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+
+//    if(rank>0){
+//      
+//      MPI_Send( z, n_wier, MPI_DOUBLE, 0, tag, MPI_COMM_WORLD );
+//      
+//    } else {
+//      
+//      for(i=1;i<size;i++){
+//	MPI_Recv( &z[i*n_wier], n_wier, MPI_DOUBLE, i, tag, MPI_COMM_WORLD, &status  );
+//	
+//      }
+//      
+//    }
+	MPI_Gather(z, n_wier, MPI_DOUBLE, z, n_wier, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
       if(rank==0){
       
