@@ -1,0 +1,11 @@
+mpi-gp-1@--zone=europe-central2-a
+mpi-gp-1@--zone=europe-north1-a
+mpi-gp-1@--zone=europe-southwest1-a
+mpi-gp-2@--zone=europe-central2-a
+mpi-gp-2@--zone=europe-north1-a
+mpi-gp-2@--zone=europe-southwest1-a
+mpi-gp-3@--zone=europe-central2-a
+mpi-gp-3@--zone=europe-north1-a
+mpi-gp-3@--zone=europe-southwest1-a
+mpi-gp-4@--zone=europe-central2-a
+mpi-gp-4@--zone=europe-north1-a
