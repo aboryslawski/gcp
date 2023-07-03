@@ -181,13 +181,14 @@ main ( int argc, char** argv )
     
     // point-to-point not optimal communication
     
-    if(rank!=0)
-    {
-      for(i=0;i<WYMIAR;i++) x[i]=0.0;
-      a = (double *) malloc(WYMIAR*n_wier*sizeof(double));
-    }
+//    if(rank!=0)
+//    {
+//      for(i=0;i<WYMIAR;i++) x[i]=0.0;
+//      a = (double *) malloc(WYMIAR*n_wier*sizeof(double));
+//    }
 
     MPI_Scatter(a, WYMIAR*n_wier, MPI_DOUBLE, a, WYMIAR*n_wier, MPI_DOUBLE, 0, MPI_COMM_WORLD);
+    //MPI_Bcast(x, WYMIAR, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
 //    if(rank>0){
 //      
