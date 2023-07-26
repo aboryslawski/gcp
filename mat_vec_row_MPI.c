@@ -99,6 +99,7 @@ main ( int argc, char** argv )
 
     MPI_Scatter( a, n_wier*WYMIAR, MPI_DOUBLE, a_local, n_wier*WYMIAR, MPI_DOUBLE, 0, MPI_COMM_WORLD );
     
+    MPI_Barrier(MPI_COMM_WORLD);        
     if(rank==0) {
       t1 = MPI_Wtime() - t1;
       printf("\tMPI_Scatter took %lf seconds\n\n", t1);
