@@ -55,14 +55,14 @@ main ( int argc, char** argv )
     //printf("Podaj liczbe watkow: "); scanf("%d",&nt);
     nt=1;
     
-    printf("poczatek (wykonanie sekwencyjne)\n");
+   // printf("poczatek (wykonanie sekwencyjne)\n");
     
     t1 = MPI_Wtime();
     mat_vec(a,x,y,n,nt);
     t1 = MPI_Wtime() - t1;
     
-    printf("\tczas wykonania (zaburzony przez MPI?): %lf, Gflop/s: %lf, GB/s> %lf\n",  
-	   t1, 2.0e-9*ROZMIAR/t1, (1.0+1.0/n)*8.0e-9*ROZMIAR/t1);
+    //printf("\tczas wykonania (zaburzony przez MPI?): %lf, Gflop/s: %lf, GB/s> %lf\n",  
+//	   t1, 2.0e-9*ROZMIAR/t1, (1.0+1.0/n)*8.0e-9*ROZMIAR/t1);
     
   }
   
@@ -93,7 +93,7 @@ main ( int argc, char** argv )
     
     MPI_Barrier(MPI_COMM_WORLD);        
     if(rank==0) {
-      printf("\n\nMPI_Scatter time measurement.\n");
+      printf("\nMPI_Scatter time measurement.\n");
       t1 = MPI_Wtime();
     }
 
@@ -103,14 +103,13 @@ main ( int argc, char** argv )
     if(rank==0) {
       t1 = MPI_Wtime() - t1;
       printf("\tMPI_Scatter took %lf seconds\n\n", t1);
-      
     }
 
     MPI_Bcast(x, WYMIAR, MPI_DOUBLE, 0, MPI_COMM_WORLD );
 
 
     if(rank==0) {
-      printf("Starting MPI matrix-vector product with block row decomposition!\n");
+//      printf("Starting MPI matrix-vector product with block row decomposition!\n");
       t1 = MPI_Wtime();
     }
     
@@ -135,16 +134,29 @@ main ( int argc, char** argv )
     }
     
     // just to measure time
+ //   MPI_Barrier(MPI_COMM_WORLD);
+ //   if(rank==0) {
+ //     t1 = MPI_Wtime() - t1;
+ //     printf("Werja rownolegla MPI z dekompozycją wierszową blokową\n");
+ //     printf("\tczas wykonania: %lf, Gflop/s: %lf, GB/s> %lf\n",  
+ //            t1, 2.0e-9*ROZMIAR/t1, (1.0+1.0/n)*8.0e-9*ROZMIAR/t1);
+ //     
+ //   }
+
+
     MPI_Barrier(MPI_COMM_WORLD);        
     if(rank==0) {
-      t1 = MPI_Wtime() - t1;
-      printf("Werja rownolegla MPI z dekompozycją wierszową blokową\n");
-      printf("\tczas wykonania: %lf, Gflop/s: %lf, GB/s> %lf\n",  
-	     t1, 2.0e-9*ROZMIAR/t1, (1.0+1.0/n)*8.0e-9*ROZMIAR/t1);
-      
+      printf("\n\nMPI_Gather time measurement.\n");
+      t1 = MPI_Wtime();
     }
     
     MPI_Gather( z, n_wier, MPI_DOUBLE, z, n_wier, MPI_DOUBLE, 0, MPI_COMM_WORLD );
+
+    MPI_Barrier(MPI_COMM_WORLD);        
+    if(rank==0) {
+      t1 = MPI_Wtime() - t1;
+      printf("\tMPI_Gather took %lf seconds\n\n", t1);
+    }
     
     if(rank==0){
       
