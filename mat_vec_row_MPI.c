@@ -102,7 +102,7 @@ main ( int argc, char** argv )
     MPI_Barrier(MPI_COMM_WORLD);        
     if(rank==0) {
       t1 = MPI_Wtime() - t1;
-      printf("\tMPI_Scatter took %lf seconds\n\n", t1);
+      printf("\tMPI_Scatter took %lf seconds", t1);
     }
 
     MPI_Bcast(x, WYMIAR, MPI_DOUBLE, 0, MPI_COMM_WORLD );
