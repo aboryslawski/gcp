@@ -15,7 +15,6 @@ int main( int argc, char** argv ){
   float t1 = 0.0;
   
   if(size>1){
-        MPI_Barrier(MPI_COMM_WORLD);
         if(rank==0) {
           t1 = MPI_Wtime() - t1;
         }
@@ -36,13 +35,11 @@ int main( int argc, char** argv ){
       }
       
     }
-    MPI_Barrier(MPI_COMM_WORLD);
     
     if(rank==0) {
 	    t1 = MPI_Wtime() - t1;
 	    printf("\tczas wykonania: %lf\n", t1);
     }
-
   }
   else{
         printf("Pojedynczy proces o randze: %d (brak komunikatów)\n", rank);
@@ -52,4 +49,3 @@ int main( int argc, char** argv ){
   
   return(0);
 }
-
