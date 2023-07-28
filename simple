@@ -1,0 +1,23 @@
+specjalniedopejpala@mpi-gp-0:~$ mpirun -np 12 --hostfile twelve_hosts a.out                                                                                                                                              
+Dane od procesu o randze (status.MPI_SOURCE ->) 9: 9 (i=1)
+        czas wykonania: 0.069702
+Dane od procesu o randze (status.MPI_SOURCE ->) 10: 10 (i=2)
+        czas wykonania: 0.000216
+Dane od procesu o randze (status.MPI_SOURCE ->) 6: 6 (i=3)
+        czas wykonania: 0.072914
+Dane od procesu o randze (status.MPI_SOURCE ->) 5: 5 (i=4)
+        czas wykonania: 0.001240
+Dane od procesu o randze (status.MPI_SOURCE ->) 7: 7 (i=5)
+        czas wykonania: 0.073010
+Dane od procesu o randze (status.MPI_SOURCE ->) 8: 8 (i=6)
+        czas wykonania: 0.001831
+Dane od procesu o randze (status.MPI_SOURCE ->) 11: 11 (i=7)
+        czas wykonania: 0.078528
+Dane od procesu o randze (status.MPI_SOURCE ->) 4: 4 (i=8)
+        czas wykonania: 0.027004
+Dane od procesu o randze (status.MPI_SOURCE ->) 1: 1 (i=9)
+        czas wykonania: 0.084332
+Dane od procesu o randze (status.MPI_SOURCE ->) 3: 3 (i=10)
+        czas wykonania: 0.031728
+Dane od procesu o randze (status.MPI_SOURCE ->) 2: 2 (i=11)
+        czas wykonania: 0.086612

@@ -1,0 +1,41 @@
+specjalniedopejpala@mpi-gp-0:~$ mpirun -np 2 --hostfile two_hosts a.out
+
+MPI_Scatter time measurement.
+        MPI_Scatter took 5.535865 seconds
+
+MPI_Gather time measurement.
+        MPI_Gather took 0.044377 seconds
+
+specjalniedopejpala@mpi-gp-0:~$ mpirun -np 4 --hostfile four_hosts a.out
+
+MPI_Scatter time measurement.
+        MPI_Scatter took 8.485501 seconds
+
+MPI_Gather time measurement.
+        MPI_Gather took 0.047663 seconds
+
+specjalniedopejpala@mpi-gp-0:~$ mpirun -np 8 --hostfile eight_hosts a.out
+
+MPI_Scatter time measurement.
+        MPI_Scatter took 9.024337 seconds
+
+MPI_Gather time measurement.
+        MPI_Gather took 0.017930 seconds
+
+specjalniedopejpala@mpi-gp-0:~$ mpirun -np 12 --hostfile twelve_hosts a.out
+
+MPI_Scatter time measurement.
+        MPI_Scatter took 9.801938 seconds
+
+MPI_Gather time measurement.
+        MPI_Gather took 0.076387 seconds
+
+specjalniedopejpala@mpi-gp-0:~$ mpirun -np 4 --hostfile single_zone a.out
+
+MPI_Scatter time measurement.
+        MPI_Scatter took 5.693361 seconds
+
+MPI_Gather time measurement.
+        MPI_Gather took 0.000614 seconds
+
+specjalniedopejpala@mpi-gp-0:~$ 
