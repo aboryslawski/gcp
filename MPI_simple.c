@@ -16,7 +16,7 @@ int main( int argc, char** argv ){
   
   if(size>1){
 //        if(rank==0) {
-          t1 = MPI_Wtime() - t1;
+    t1 = MPI_Wtime() - t1;
 //        }
     
     if( rank != 0 ){ dest=0; tag=0; 
@@ -37,11 +37,6 @@ int main( int argc, char** argv ){
       }
       
     }
-    
-//    if(rank==0) {
-//	    t1 = MPI_Wtime() - t1;
-//	    printf("\tczas wykonania: %lf\n", t1);
-//    }
   }
   else{
         printf("Pojedynczy proces o randze: %d (brak komunikatów)\n", rank);
