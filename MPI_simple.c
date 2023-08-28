@@ -14,32 +14,29 @@ int main( int argc, char** argv ){
   MPI_Comm_size( MPI_COMM_WORLD, &size );
   float t1 = 0.0;
   
-  if(size>1){
-//        if(rank==0) {
-    t1 = MPI_Wtime() - t1;
-//        }
-    
-    if( rank != 0 ){ dest=0; tag=0; 
+  if(size == 2){
+
+    if( rank == 0 ){ dest=0; tag=0; 
+
+      t1 = MPI_Wtime() - t1;
 
       MPI_Send( &rank, 1, MPI_INT, dest, tag, MPI_COMM_WORLD );
-      
-    } else {
-      
-      for( i=1; i<size; i++ ) { 
+      MPI_Recv( &ranksent, 1, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status );
 
+      t1 = MPI_Wtime() - t1;
+      printf("\tczas wykonania: %lf\n", t1);
+
+    } else {
         
-        MPI_Recv( &ranksent, 1, MPI_INT, MPI_ANY_SOURCE, 
-                  MPI_ANY_TAG, MPI_COMM_WORLD, &status );
-        printf("Dane od procesu o randze (status.MPI_SOURCE ->) %d: %d (i=%d)\n", 
-               status.MPI_SOURCE, ranksent, i );
-        t1 = MPI_Wtime() - t1;
-        printf("\tczas wykonania: %lf\n", t1);
-      }
-      
+        MPI_Send( &rank, 1, MPI_INT, dest, tag, MPI_COMM_WORLD );
+        MPI_Recv( &ranksent, 1, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status );
+
+        printf("Dane od procesu o randze (status.MPI_SOURCE ->) %d: %d (i=%d)\n", status.MPI_SOURCE, ranksent, i );
     }
   }
+
   else{
-        printf("Pojedynczy proces o randze: %d (brak komunikatów)\n", rank);
+        printf("Program musi byc uruchamiany z dwoma procesami.\n");
   }
 
   MPI_Finalize(); 
