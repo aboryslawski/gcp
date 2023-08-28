@@ -30,8 +30,6 @@ int main( int argc, char** argv ){
         
         MPI_Recv( &ranksent, 1, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status );
         MPI_Send( &rank, 1, MPI_INT, dest, tag, MPI_COMM_WORLD );
-
-        printf("Dane od procesu o randze (status.MPI_SOURCE ->) %d: %d (i=%d)\n", status.MPI_SOURCE, ranksent, i );
     }
   }
 
