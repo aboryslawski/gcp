@@ -16,7 +16,7 @@ int main( int argc, char** argv ){
   
   if(size == 2){
 
-    if( rank == 0 ){ dest=0; tag=0; 
+    if( rank == 0 ){ dest=1; tag=0; 
 
       t1 = MPI_Wtime() - t1;
 
@@ -26,10 +26,10 @@ int main( int argc, char** argv ){
       t1 = MPI_Wtime() - t1;
       printf("\tczas wykonania: %lf\n", t1);
 
-    } else {
+    } else { dest=0 ; tag=0;
         
-        MPI_Send( &rank, 1, MPI_INT, dest, tag, MPI_COMM_WORLD );
         MPI_Recv( &ranksent, 1, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status );
+        MPI_Send( &rank, 1, MPI_INT, dest, tag, MPI_COMM_WORLD );
 
         printf("Dane od procesu o randze (status.MPI_SOURCE ->) %d: %d (i=%d)\n", status.MPI_SOURCE, ranksent, i );
     }
